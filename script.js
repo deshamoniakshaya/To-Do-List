@@ -7,7 +7,7 @@ const searchInput = document.getElementById("searchInput");
 const totalTasks = document.getElementById("totalTasks");
 const completedTasks = document.getElementById("completedTasks");
 const remainingTasks = document.getElementById("remainingTasks");
-
+const themeToggle = document.getElementById("themeToggle");
 
 function updateTaskCounter(){
 
@@ -56,7 +56,11 @@ function searchTasks(){
 
 addBtn.addEventListener("click", addTask);
 searchInput.addEventListener("input", searchTasks);
+themeToggle.addEventListener("click", function(){
 
+    document.body.classList.toggle("dark-mode");
+
+});
 taskInput.addEventListener("keypress", function(event){
 
     if(event.key === "Enter"){
