@@ -181,3 +181,13 @@ li{
     width:100%;
 
 }
+li div{
+    display:flex;
+    flex-direction:column;
+}
+
+li small{
+    color:gray;
+    font-size:12px;
+    margin-top:5px;
+}

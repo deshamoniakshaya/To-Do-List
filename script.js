@@ -74,12 +74,21 @@ function createTaskElement(task){
 
     const li = document.createElement("li");
 
+    if(!task.createdAt){
 
-    li.innerHTML = `
+    task.createdAt = "Old task";
+
+}
+
+   li.innerHTML = `
+    <div>
         <span>${task.text}</span>
-        <button class="editBtn">Edit</button>
-        <button class="deleteBtn">Delete</button>
-    `;
+        <small>Created: ${task.createdAt}</small>
+    </div>
+
+    <button class="editBtn">Edit</button>
+    <button class="deleteBtn">Delete</button>
+`;
 
 
     taskList.appendChild(li);
@@ -200,15 +209,15 @@ function addTask(){
 
 
 
-    const task = {
+   const task = {
 
-        text: taskText,
+    text: taskText,
 
-        completed:false
+    completed:false,
 
-    };
+    createdAt: new Date().toLocaleString()
 
-
+};
 
     tasks.push(task);
 
