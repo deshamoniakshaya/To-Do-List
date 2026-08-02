@@ -34,17 +34,38 @@ function addTask(){
 
     taskList.appendChild(li);
 
-    tasks.push(task);
+    tasks.push({
+    text: task,
+    completed: false
+});
 
 localStorage.setItem("tasks", JSON.stringify(tasks));
 
     taskInput.value = "";
 
+   li.addEventListener("click", function(event){
+
+    if(event.target.classList.contains("deleteBtn")) return;
+
+    li.classList.toggle("completed");
+
+    const index = tasks.findIndex(t => t.text === task);
+
+    if(index !== -1){
+
+        tasks[index].completed = li.classList.contains("completed");
+
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    }
+
+});
+
     const deleteBtn = li.querySelector(".deleteBtn");
 
   deleteBtn.addEventListener("click", function(){
 
-    tasks = tasks.filter(t => t !== task);
+    tasks = tasks.filter(t => t.text !== task);
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
@@ -66,17 +87,32 @@ window.onload = function(){
             const li = document.createElement("li");
 
             li.innerHTML = `
-                <span>${task}</span>
-                <button class="deleteBtn">Delete</button>
-            `;
-
+    <span>${task.text}</span>
+    <button class="deleteBtn">Delete</button>
+`;
             taskList.appendChild(li);
+
+            if(task.completed){
+    li.classList.add("completed");
+}
+
+            li.addEventListener("click", function(event){
+
+    if(event.target.classList.contains("deleteBtn")) return;
+
+    li.classList.toggle("completed");
+
+    task.completed = li.classList.contains("completed");
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+});
 
             const deleteBtn = li.querySelector(".deleteBtn");
 
             deleteBtn.addEventListener("click", function(){
 
-                tasks = tasks.filter(t => t !== task);
+                tasks = tasks.filter(t => t.text !== task.text);
 
                 localStorage.setItem("tasks", JSON.stringify(tasks));
 
