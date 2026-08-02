@@ -77,7 +77,9 @@ input:focus{
 
     border-color:#1976d2;
 
-    box-shadow:0 0 10px rgba(25,118,210,.3);
+    box-shadow:0 0 15px rgba(25,118,210,.35);
+
+    transform:scale(1.02);
 
 }
 
@@ -102,10 +104,11 @@ button{
     background:#3b82f6;
 
 }
-
 button:hover{
 
-     background:#2563eb;
+    background:#2563eb;
+
+    transform:scale(1.05);
 
 }
 
@@ -135,14 +138,16 @@ li{
 
     box-shadow:0 5px 15px rgba(0,0,0,.08);
 
-    transition:.3s;
+    transition:all 0.3s ease;
+
+    animation:slideIn 0.4s ease;
 
 }
 li:hover{
 
-    transform:translateY(-3px);
+    transform:translateY(-5px);
 
-    box-shadow:0 10px 20px rgba(0,0,0,.15);
+    box-shadow:0 12px 25px rgba(0,0,0,.15);
 
 }
 .completed{
@@ -333,5 +338,33 @@ li small{
         width:100%;
 
     }
+
+}
+@keyframes slideIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+body,
+.container,
+li,
+input,
+button{
+
+    transition:0.3s ease;
 
 }
