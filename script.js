@@ -3,6 +3,26 @@ let tasks = [];
 const taskInput = document.getElementById("taskInput");
 const addBtn = document.getElementById("addBtn");
 const taskList = document.getElementById("taskList");
+const totalTasks = document.getElementById("totalTasks");
+const completedTasks = document.getElementById("completedTasks");
+const remainingTasks = document.getElementById("remainingTasks");
+
+function updateTaskCounter(){
+
+    const total = tasks.length;
+
+    const completed = tasks.filter(task => task.completed).length;
+
+    const remaining = total - completed;
+
+
+    totalTasks.textContent = total;
+
+    completedTasks.textContent = completed;
+
+    remainingTasks.textContent = remaining;
+
+}
 
 addBtn.addEventListener("click", addTask);
 
@@ -41,6 +61,8 @@ function addTask(){
 
 localStorage.setItem("tasks", JSON.stringify(tasks));
 
+updateTaskCounter();
+
     taskInput.value = "";
 
    li.addEventListener("click", function(event){
@@ -57,6 +79,8 @@ localStorage.setItem("tasks", JSON.stringify(tasks));
 
         localStorage.setItem("tasks", JSON.stringify(tasks));
 
+        updateTaskCounter();
+
     }
 
 });
@@ -68,6 +92,8 @@ localStorage.setItem("tasks", JSON.stringify(tasks));
     tasks = tasks.filter(t => t.text !== task);
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    updateTaskCounter();
 
     li.remove();
 
@@ -106,6 +132,8 @@ window.onload = function(){
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
+    updateTaskCounter();
+
 });
 
             const deleteBtn = li.querySelector(".deleteBtn");
@@ -118,10 +146,12 @@ window.onload = function(){
 
                 li.remove();
 
+                updateTaskCounter();
             });
 
         });
 
     }
 
+     updateTaskCounter();
 };
