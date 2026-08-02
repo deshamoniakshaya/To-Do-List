@@ -3,7 +3,7 @@ let tasks = [];
 const taskInput = document.getElementById("taskInput");
 const addBtn = document.getElementById("addBtn");
 const taskList = document.getElementById("taskList");
-
+const searchInput = document.getElementById("searchInput");
 const totalTasks = document.getElementById("totalTasks");
 const completedTasks = document.getElementById("completedTasks");
 const remainingTasks = document.getElementById("remainingTasks");
@@ -26,10 +26,36 @@ function updateTaskCounter(){
 
 }
 
+function searchTasks(){
 
+    const searchText = searchInput.value.toLowerCase();
+
+
+    const allTasks = document.querySelectorAll("#taskList li");
+
+
+    allTasks.forEach(function(task){
+
+        const text = task.querySelector("span").textContent.toLowerCase();
+
+
+        if(text.includes(searchText)){
+
+            task.style.display = "flex";
+
+        }
+        else{
+
+            task.style.display = "none";
+
+        }
+
+    });
+
+}
 
 addBtn.addEventListener("click", addTask);
-
+searchInput.addEventListener("input", searchTasks);
 
 taskInput.addEventListener("keypress", function(event){
 
