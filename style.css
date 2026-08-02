@@ -127,3 +127,45 @@ li{
     opacity:0.7;
 
 }
+
+.task-stats{
+
+    margin-top:20px;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    font-size:16px;
+
+}
+
+.task-stats p{
+
+    margin:5px;
+
+}
+
+.editBtn{
+
+    background:#4caf50;
+
+}
+
+.editBtn:hover{
+
+    background:#388e3c;
+
+}
+
+.deleteBtn{
+
+    background:#f44336;
+
+}
+
+.deleteBtn:hover{
+
+    background:#d32f2f;
+
+}
